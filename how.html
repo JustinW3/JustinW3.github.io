@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Justin Watkins</title>
+<title>Justin Watkins — How I work</title>
 <meta name="description" content="Justin Watkins — I build and ship working software. Virginia Beach, VA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,49 +226,37 @@ footer a:hover{color:var(--fg);}
 </head>
 <body>
 
-<div class="landing" id="top">
-  <span class="boxmark">Justin Watkins</span>
-  <p class="clock" id="clock">Virginia Beach, VA</p>
-
-  <nav>
-    <a href="work.html">Work</a>
-    <a href="how.html">How I work</a>
-    <a href="about.html">About</a>
-    <a href="skills.html">Skills</a>
-    <a href="background.html">Background</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <p class="social">
-    <a href="https://github.com/JustinW3">GitHub</a>
-    <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
-    <a href="mailto:you@example.com">Email</a>
-  </p>
-
-  <p class="fine">I build things and get them running.</p>
+<div class="bar on" id="bar">
+  <div class="wrap">
+    <a href="index.html"><span class="boxmark">Justin Watkins</span></a>
+    <nav>
+      <a href="work.html">Work</a>
+      <a href="how.html">How I work</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="background.html">Background</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </div>
 
-<script>
-(function(){
-  var clock = document.getElementById('clock');
-  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+<main class="wrap">
 
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  <section id="how">
+    <h2>How I work</h2>
+    <p class="blurb">Worth saying plainly, because it will come up anyway.</p>
+    <p>I use AI tools heavily, and I am not going to pretend otherwise. A lot of the code in the projects above was written with Claude Code sitting next to me. That is how I build fast, and it is how most of this industry is going to work from here.</p>
+    <p>What I bring is the part the tool cannot do. Deciding what to build and why. Knowing whether the thing that came back is correct or quietly broken. Choosing how the pieces fit together — where the data lives, who is allowed to see it, what happens when a payment fails at 2am. Then owning it when it breaks, because the tool stops helping the moment something goes wrong in production and you have to actually understand the system.</p>
+    <p>I am not a specialist in any one layer yet. I know enough of every layer — front end, database, authentication, payments, DNS, deployment — to design a system, build it, and fix it. Then I go a level deeper on whatever the current problem demands.</p>
+    <p>I would rather tell you that up front than have you find out later.</p>
+  </section>
 
-  function tick(){
-    var d = new Date();
-    var h = d.getHours();
-    var ampm = h >= 12 ? 'pm' : 'am';
-    h = h % 12; if (h === 0) h = 12;
-    clock.textContent =
-      months[d.getMonth()] + '/' + pad(d.getDate()) + '/' + d.getFullYear() +
-      ' ' + h + ':' + pad(d.getMinutes()) + ampm + ' Virginia Beach';
-  }
+</main>
 
-  tick();
-  setInterval(tick, 10000);
-})();
-</script>
+<footer>
+  <span>Justin Watkins, Virginia Beach</span>
+  <a href="index.html">Back to top</a>
+</footer>
 
 </body>
 </html>

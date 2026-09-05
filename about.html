@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Justin Watkins</title>
+<title>Justin Watkins — About</title>
 <meta name="description" content="Justin Watkins — I build and ship working software. Virginia Beach, VA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,49 +226,43 @@ footer a:hover{color:var(--fg);}
 </head>
 <body>
 
-<div class="landing" id="top">
-  <span class="boxmark">Justin Watkins</span>
-  <p class="clock" id="clock">Virginia Beach, VA</p>
-
-  <nav>
-    <a href="work.html">Work</a>
-    <a href="how.html">How I work</a>
-    <a href="about.html">About</a>
-    <a href="skills.html">Skills</a>
-    <a href="background.html">Background</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <p class="social">
-    <a href="https://github.com/JustinW3">GitHub</a>
-    <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
-    <a href="mailto:you@example.com">Email</a>
-  </p>
-
-  <p class="fine">I build things and get them running.</p>
+<div class="bar on" id="bar">
+  <div class="wrap">
+    <a href="index.html"><span class="boxmark">Justin Watkins</span></a>
+    <nav>
+      <a href="work.html">Work</a>
+      <a href="how.html">How I work</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="background.html">Background</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </div>
 
-<script>
-(function(){
-  var clock = document.getElementById('clock');
-  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+<main class="wrap">
 
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  <section id="about">
+    <h2>About</h2>
 
-  function tick(){
-    var d = new Date();
-    var h = d.getHours();
-    var ampm = h >= 12 ? 'pm' : 'am';
-    h = h % 12; if (h === 0) h = 12;
-    clock.textContent =
-      months[d.getMonth()] + '/' + pad(d.getDate()) + '/' + d.getFullYear() +
-      ' ' + h + ':' + pad(d.getMinutes()) + ampm + ' Virginia Beach';
-  }
+    <figure class="portrait">
+      <!-- Save your photo as me.jpg in the same folder as this file -->
+      <img src="me.jpg" alt="Justin Watkins">
+      <figcaption>Virginia Beach, VA</figcaption>
+    </figure>
 
-  tick();
-  setInterval(tick, 10000);
-})();
-</script>
+    <p>I started in computer science at Tidewater Community College and transferred to Old Dominion to finish in cybersecurity. That was less a change of subject than a change of angle. Writing software teaches you how a system is assembled. Security is about what happens when somebody takes it apart on purpose.</p>
+    <p>Most days I work as a maintenance technician at a timeshare resort: appliance repair, pool chemistry and equipment, and general facilities work across occupied units. It is unglamorous and it has been the most useful training I have had. You learn to diagnose from an incomplete description, work in a live environment you cannot shut down, and explain a failure to someone without making them feel stupid. A help desk and a service call run on the same three skills.</p>
+    <p>Before this I spent about three years at L.L.Bean in sales and a year and a half washing dishes. I am comfortable with hard work and with being the person who stays until the thing is actually fixed.</p>
+    <p>Away from work I fish the Sandbridge surf and the local piers, tie flies, and do leatherwork. All three are close attention over long stretches, which is probably why I like them.</p>
+  </section>
+
+</main>
+
+<footer>
+  <span>Justin Watkins, Virginia Beach</span>
+  <a href="index.html">Back to top</a>
+</footer>
 
 </body>
 </html>

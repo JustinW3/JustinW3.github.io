@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Justin Watkins</title>
+<title>Justin Watkins — Work</title>
 <meta name="description" content="Justin Watkins — I build and ship working software. Virginia Beach, VA.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,49 +226,58 @@ footer a:hover{color:var(--fg);}
 </head>
 <body>
 
-<div class="landing" id="top">
-  <span class="boxmark">Justin Watkins</span>
-  <p class="clock" id="clock">Virginia Beach, VA</p>
-
-  <nav>
-    <a href="work.html">Work</a>
-    <a href="how.html">How I work</a>
-    <a href="about.html">About</a>
-    <a href="skills.html">Skills</a>
-    <a href="background.html">Background</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <p class="social">
-    <a href="https://github.com/JustinW3">GitHub</a>
-    <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
-    <a href="mailto:you@example.com">Email</a>
-  </p>
-
-  <p class="fine">I build things and get them running.</p>
+<div class="bar on" id="bar">
+  <div class="wrap">
+    <a href="index.html"><span class="boxmark">Justin Watkins</span></a>
+    <nav>
+      <a href="work.html">Work</a>
+      <a href="how.html">How I work</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="background.html">Background</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </div>
 
-<script>
-(function(){
-  var clock = document.getElementById('clock');
-  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+<main class="wrap">
 
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  <section id="work">
+    <h2>Work</h2>
+    <p class="blurb">Every project here came out of a problem I actually ran into. Status is listed honestly, including the one I shut down.</p>
 
-  function tick(){
-    var d = new Date();
-    var h = d.getHours();
-    var ampm = h >= 12 ? 'pm' : 'am';
-    h = h % 12; if (h === 0) h = 12;
-    clock.textContent =
-      months[d.getMonth()] + '/' + pad(d.getDate()) + '/' + d.getFullYear() +
-      ' ' + h + ':' + pad(d.getMinutes()) + ampm + ' Virginia Beach';
-  }
+    <article class="item">
+      <h3>Kaizu</h3>
+      <p class="state">Built and shipped / retired on purpose</p>
+      <p>A fishing app built as three connected products: a mobile app, an internal admin dashboard, and a public site selling paid memberships.</p>
+      <p>The mobile app handled sign-in, catch logging, species records, trip grouping, and a social feed, running on real iPhone hardware through TestFlight. The dashboard ran on role-based permissions, so moderators could manage tournaments and merch drops while revenue and staff management stayed owner-only. The website took subscriptions through Stripe and sold memberships outside the app store.</p>
+      <p>I retired it after reading the market. The category is crowded and the incumbent has hardware integrations I could not match. I would rather kill a project deliberately than let it rot quietly. The architecture stands and I learned more building it than I would have finishing it.</p>
+      <p class="stack">React Native (Expo), Next.js, Supabase (Postgres, auth, storage), Stripe subscriptions and webhooks, Vercel, Cloudflare DNS and email routing, local Xcode builds</p>
+    </article>
 
-  tick();
-  setInterval(tick, 10000);
-})();
-</script>
+    <article class="item">
+      <h3>Maintenance ticketing</h3>
+      <p class="state">Running in pilot</p>
+      <p>Maintenance software at a resort ignores the one constraint that governs the job: you cannot enter an occupied unit. Tickets were getting assigned to rooms nobody could reach, then bouncing back through the queue.</p>
+      <p>I built a ticket system that checks occupancy before it routes work, so a tech opens the app to a queue they can actually clear. It is in pilot at the property where I work, and I am building toward a version a management company could run across a portfolio.</p>
+      <p class="stack">Next.js, Supabase, Vercel</p>
+    </article>
+
+    <article class="item">
+      <h3>Small business sites</h3>
+      <p class="state">Taking work now</p>
+      <p>A lot of good local businesses have no website, or one nobody has touched in a decade. I build them something fast and clean they can update themselves without calling anyone.</p>
+      <p>This page is the same thing I would build for a client. Hand-written HTML and CSS, no page builder, no template, no framework. View source if you want.</p>
+      <p class="stack">HTML, CSS, JavaScript, Next.js, content editing the owner can actually use</p>
+    </article>
+  </section>
+
+</main>
+
+<footer>
+  <span>Justin Watkins, Virginia Beach</span>
+  <a href="index.html">Back to top</a>
+</footer>
 
 </body>
 </html>
