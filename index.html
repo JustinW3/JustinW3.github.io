@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Justin Watkins</title>
+<meta name="description" content="Justin Watkins — I build and ship working software. Virginia Beach, VA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000000;
+  --fg:#ffffff;
+  --mute:#8a8a8a;
+  --dim:#4a4a4a;
+  --rule:#262626;
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"Courier Prime",ui-monospace,"Courier New",monospace;
+  font-size:15px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--fg);text-decoration:none;}
+a:hover{text-decoration:underline;text-underline-offset:4px;}
+:focus-visible{outline:1px solid var(--fg);outline-offset:4px;}
+
+.wrap{max-width:720px;margin:0 auto;padding:0 26px;}
+
+/* ---------------- landing ---------------- */
+.landing{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:70px 26px 44px;
+}
+
+.boxmark{
+  display:inline-block;
+  background:var(--fg);
+  color:var(--bg);
+  font-weight:700;
+  font-size:clamp(21px,6.2vw,34px);
+  letter-spacing:-.01em;
+  padding:5px 17px 7px;
+  line-height:1.15;
+}
+
+.clock{
+  color:var(--mute);
+  font-size:15px;
+  margin:16px 0 0;
+  letter-spacing:.01em;
+}
+
+.landing nav{
+  display:flex;
+  flex-direction:column;
+  gap:19px;
+  margin:60px 0 0;
+  font-size:17px;
+}
+
+.landing .social{
+  margin:52px 0 0;
+  color:var(--dim);
+  font-size:14px;
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.landing .social a{color:var(--dim);}
+.landing .social a:hover{color:var(--fg);}
+
+.landing .fine{
+  margin:44px 0 0;
+  color:var(--dim);
+  font-size:13.5px;
+}
+
+/* ---------------- persistent bar ---------------- */
+.bar{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  padding:9px 0;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s linear;
+}
+.bar.on{opacity:1;pointer-events:auto;}
+@media (prefers-reduced-motion:reduce){.bar{transition:none;}}
+.bar .wrap{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  max-width:960px;
+  font-size:13.5px;
+}
+.bar .boxmark{font-size:14px;padding:2px 8px 3px;}
+.bar a{color:var(--mute);}
+.bar a:hover{color:var(--fg);}
+
+/* ---------------- sections ---------------- */
+section{
+  padding:64px 0 12px;
+  border-top:1px solid var(--rule);
+  scroll-margin-top:52px;
+}
+section:first-of-type{border-top:none;}
+
+h2{
+  margin:0 0 8px;
+  font-size:15px;
+  font-weight:700;
+}
+.blurb{
+  color:var(--mute);
+  margin:0 0 34px;
+  max-width:62ch;
+}
+
+p{max-width:64ch;margin:0 0 15px;}
+p:last-child{margin-bottom:0;}
+
+/* ---------------- entries ---------------- */
+.item{
+  padding:26px 0;
+  border-top:1px solid var(--rule);
+}
+.item:first-of-type{border-top:none;padding-top:0;}
+
+.item h3{
+  margin:0;
+  font-size:15px;
+  font-weight:700;
+}
+.item .state{
+  color:var(--mute);
+  margin:0 0 15px;
+  font-size:14px;
+}
+.item .stack{
+  color:var(--dim);
+  font-size:13.5px;
+  margin:16px 0 0;
+  max-width:64ch;
+  line-height:1.65;
+}
+
+/* ---------------- about ---------------- */
+.portrait{margin:0 0 26px;max-width:230px;}
+.portrait img{width:100%;display:block;border:1px solid var(--rule);}
+.portrait figcaption{color:var(--dim);font-size:13.5px;margin-top:8px;}
+
+/* ---------------- lists ---------------- */
+.group{margin:0 0 30px;}
+.group:last-child{margin-bottom:0;}
+.group h3{
+  margin:0 0 9px;
+  font-size:15px;
+  font-weight:700;
+  color:var(--mute);
+}
+.group ul{margin:0;padding:0;list-style:none;}
+.group li{
+  padding:3px 0;
+  max-width:64ch;
+}
+.group li::before{
+  content:"— ";
+  color:var(--dim);
+}
+
+/* ---------------- background rows ---------------- */
+.job{
+  padding:19px 0;
+  border-top:1px solid var(--rule);
+}
+.job:first-of-type{border-top:none;padding-top:0;}
+.job .when{color:var(--dim);font-size:13.5px;margin:0 0 3px;}
+.job .what{font-weight:700;margin:0;}
+.job p.note{color:var(--mute);margin:5px 0 0;}
+
+/* ---------------- contact ---------------- */
+.lines{margin:0;padding:0;list-style:none;}
+.lines li{padding:5px 0;}
+.lines li span{color:var(--dim);display:inline-block;min-width:9.5em;}
+
+footer{
+  border-top:1px solid var(--rule);
+  margin-top:64px;
+  padding:22px 0 62px;
+  color:var(--dim);
+  font-size:13.5px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+footer a{color:var(--dim);}
+footer a:hover{color:var(--fg);}
+
+/* ---------------- responsive ---------------- */
+@media (max-width:620px){
+  body{font-size:14.5px;}
+  .landing nav{font-size:16px;gap:17px;margin-top:48px;}
+  .clock{font-size:13.5px;}
+  section{padding-top:52px;}
+  .lines li span{display:block;min-width:0;}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <a href="#top"><span class="boxmark">Justin Watkins</span></a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<div class="landing" id="top">
+  <span class="boxmark">Justin Watkins</span>
+  <p class="clock" id="clock">Virginia Beach, VA</p>
+
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#how">How I work</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#background">Background</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <p class="social">
+    <a href="https://github.com/JustinW3">GitHub</a>
+    <a href="https://www.linkedin.com/in/your-profile">LinkedIn</a>
+    <a href="mailto:you@example.com">Email</a>
+  </p>
+
+  <p class="fine">I build things and get them running.</p>
+</div>
+
+<main class="wrap">
+
+  <section id="work">
+    <h2>Work</h2>
+    <p class="blurb">Every project here came out of a problem I actually ran into. Status is listed honestly, including the one I shut down.</p>
+
+    <article class="item">
+      <h3>Kaizu</h3>
+      <p class="state">Built and shipped / retired on purpose</p>
+      <p>A fishing app built as three connected products: a mobile app, an internal admin dashboard, and a public site selling paid memberships.</p>
+      <p>The mobile app handled sign-in, catch logging, species records, trip grouping, and a social feed, running on real iPhone hardware through TestFlight. The dashboard ran on role-based permissions, so moderators could manage tournaments and merch drops while revenue and staff management stayed owner-only. The website took subscriptions through Stripe and sold memberships outside the app store.</p>
+      <p>I retired it after reading the market. The category is crowded and the incumbent has hardware integrations I could not match. I would rather kill a project deliberately than let it rot quietly. The architecture stands and I learned more building it than I would have finishing it.</p>
+      <p class="stack">React Native (Expo), Next.js, Supabase (Postgres, auth, storage), Stripe subscriptions and webhooks, Vercel, Cloudflare DNS and email routing, local Xcode builds</p>
+    </article>
+
+    <article class="item">
+      <h3>Maintenance ticketing</h3>
+      <p class="state">Running in pilot</p>
+      <p>Maintenance software at a resort ignores the one constraint that governs the job: you cannot enter an occupied unit. Tickets were getting assigned to rooms nobody could reach, then bouncing back through the queue.</p>
+      <p>I built a ticket system that checks occupancy before it routes work, so a tech opens the app to a queue they can actually clear. It is in pilot at the property where I work, and I am building toward a version a management company could run across a portfolio.</p>
+      <p class="stack">Next.js, Supabase, Vercel</p>
+    </article>
+
+    <article class="item">
+      <h3>Small business sites</h3>
+      <p class="state">Taking work now</p>
+      <p>A lot of good local businesses have no website, or one nobody has touched in a decade. I build them something fast and clean they can update themselves without calling anyone.</p>
+      <p>This page is the same thing I would build for a client. Hand-written HTML and CSS, no page builder, no template, no framework. View source if you want.</p>
+      <p class="stack">HTML, CSS, JavaScript, Next.js, content editing the owner can actually use</p>
+    </article>
+  </section>
+
+  <section id="how">
+    <h2>How I work</h2>
+    <p class="blurb">Worth saying plainly, because it will come up anyway.</p>
+    <p>I use AI tools heavily, and I am not going to pretend otherwise. A lot of the code in the projects above was written with Claude Code sitting next to me. That is how I build fast, and it is how most of this industry is going to work from here.</p>
+    <p>What I bring is the part the tool cannot do. Deciding what to build and why. Knowing whether the thing that came back is correct or quietly broken. Choosing how the pieces fit together — where the data lives, who is allowed to see it, what happens when a payment fails at 2am. Then owning it when it breaks, because the tool stops helping the moment something goes wrong in production and you have to actually understand the system.</p>
+    <p>I am not a specialist in any one layer yet. I know enough of every layer — front end, database, authentication, payments, DNS, deployment — to design a system, build it, and fix it. Then I go a level deeper on whatever the current problem demands.</p>
+    <p>I would rather tell you that up front than have you find out later.</p>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+
+    <figure class="portrait">
+      <!-- Save your photo as me.jpg in the same folder as this file -->
+      <img src="me.jpg" alt="Justin Watkins">
+      <figcaption>Virginia Beach, VA</figcaption>
+    </figure>
+
+    <p>I started in computer science at Tidewater Community College and transferred to Old Dominion to finish in cybersecurity. That was less a change of subject than a change of angle. Writing software teaches you how a system is assembled. Security is about what happens when somebody takes it apart on purpose.</p>
+    <p>Most days I work as a maintenance technician at a timeshare resort: appliance repair, pool chemistry and equipment, and general facilities work across occupied units. It is unglamorous and it has been the most useful training I have had. You learn to diagnose from an incomplete description, work in a live environment you cannot shut down, and explain a failure to someone without making them feel stupid. A help desk and a service call run on the same three skills.</p>
+    <p>Before this I spent about three years at L.L.Bean in sales and a year and a half washing dishes. I am comfortable with hard work and with being the person who stays until the thing is actually fixed.</p>
+    <p>Away from work I fish the Sandbridge surf and the local piers, tie flies, and do leatherwork. All three are close attention over long stretches, which is probably why I like them.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="blurb">Everything here I have used to ship something real, not just read about.</p>
+
+    <div class="group">
+      <h3>Front end</h3>
+      <ul>
+        <li>HTML and CSS, written by hand</li>
+        <li>JavaScript and TypeScript</li>
+        <li>React, Next.js</li>
+        <li>React Native, Expo</li>
+        <li>Responsive and mobile layout</li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Data and back end</h3>
+      <ul>
+        <li>PostgreSQL, schema design</li>
+        <li>Supabase</li>
+        <li>Authentication and sessions</li>
+        <li>Role-based access control</li>
+        <li>REST APIs and webhooks</li>
+        <li>Stripe payments</li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Infrastructure</h3>
+      <ul>
+        <li>Vercel deployment</li>
+        <li>Cloudflare DNS and domains</li>
+        <li>Email routing and records</li>
+        <li>Git and GitHub</li>
+        <li>Environment and secrets handling</li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Hands-on</h3>
+      <ul>
+        <li>Appliance and HVAC diagnostics</li>
+        <li>Pool systems and pumps</li>
+        <li>Low-voltage and basic electrical</li>
+        <li>Work inside occupied buildings</li>
+        <li>Documenting a fix so the next person can follow it</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="background">
+    <h2>Background</h2>
+
+    <div class="job">
+      <p class="when">Current</p>
+      <p class="what">Maintenance Technician, timeshare resort</p>
+      <p class="note">Appliance repair, pool equipment and chemistry, facilities work across occupied units. Diagnose, repair, document, next call.</p>
+    </div>
+
+    <div class="job">
+      <p class="when">Current</p>
+      <p class="what">B.S. Cybersecurity, Old Dominion University</p>
+      <p class="note">Enrolled full time. Working through CompTIA Security+ alongside coursework.</p>
+    </div>
+
+    <div class="job">
+      <p class="when">Prior</p>
+      <p class="what">Computer Science, Tidewater Community College</p>
+      <p class="note">Programming and data structures, and the habit of reading code I did not write.</p>
+    </div>
+
+    <div class="job">
+      <p class="when">Prior</p>
+      <p class="what">Sales, L.L.Bean</p>
+      <p class="note">About three years talking to customers, which turns out to be most of the job everywhere.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="blurb">Open to work in Hampton Roads. Happy to walk through any project above.</p>
+    <ul class="lines">
+      <li><span>Email</span><a href="mailto:you@example.com">you@example.com</a></li>
+      <li><span>Phone</span>(757) 000-0000</li>
+      <li><span>GitHub</span><a href="https://github.com/JustinW3">github.com/JustinW3</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/your-profile">LinkedIn</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Justin Watkins, Virginia Beach</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var clock = document.getElementById('clock');
+  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function tick(){
+    var d = new Date();
+    var h = d.getHours();
+    var ampm = h >= 12 ? 'pm' : 'am';
+    h = h % 12; if (h === 0) h = 12;
+    clock.textContent =
+      months[d.getMonth()] + '/' + pad(d.getDate()) + '/' + d.getFullYear() +
+      ' ' + h + ':' + pad(d.getMinutes()) + ampm + ' Virginia Beach';
+  }
+
+  tick();
+  setInterval(tick, 10000);
+
+  var bar = document.getElementById('bar');
+  var top = document.getElementById('top');
+
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      bar.classList.toggle('on', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(top);
+  }
+})();
+</script>
+
+</body>
+</html>
