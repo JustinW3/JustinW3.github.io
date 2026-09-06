@@ -234,10 +234,10 @@ footer a:hover{color:var(--fg);}
   <div class="wrap">
     <a href="#top" class="home-link"><span class="boxmark">Justin Watkins</span></a>
     <nav>
+      <a href="#page-about">About Me</a>
       <a href="#page-projects">Projects</a>
-      <a href="#page-about">About</a>
-      <a href="#page-skills">Skills</a>
       <a href="#page-background">Background</a>
+      <a href="#page-skills">Skills</a>
       <a href="#page-contact">Contact</a>
     </nav>
   </div>
@@ -248,10 +248,10 @@ footer a:hover{color:var(--fg);}
   <p class="clock" id="clock">Virginia Beach, VA</p>
 
   <nav>
+    <a href="#page-about">About Me</a>
     <a href="#page-projects">Projects</a>
-    <a href="#page-about">About</a>
-    <a href="#page-skills">Skills</a>
     <a href="#page-background">Background</a>
+    <a href="#page-skills">Skills</a>
     <a href="#page-contact">Contact</a>
   </nav>
 
@@ -264,7 +264,21 @@ footer a:hover{color:var(--fg);}
 
 <main class="wrap" id="content" hidden>
 
-  <section id="projects">
+  <section id="about">
+    <h2>About Me</h2>
+
+    <figure class="portrait">
+      <img src="me.jpg" alt="Justin Watkins">
+      <figcaption>Virginia Beach, VA</figcaption>
+    </figure>
+
+    <p>I started in computer science at Tidewater Community College and transferred to Old Dominion to finish in cybersecurity.</p>
+    <p>I work part time as a maintenance technician at a timeshare resort: appliance repair, pool chemistry and equipment, and general facilities work across occupied units. I learned how to diagnose from an a problem with 0 background, work in a live environment you cannot shut down, and explain a failure to someone. A help desk and a service call run on the same three skills.</p>
+    <p>Before this I spent about three years at L.L.Bean in sales and a year and a half washing dishes.</p>
+    <p>Away from work I fish the Sandbridge surf and the local piers, hike, play Guitar/Violin and I work on cars.</p>
+  </section>
+
+  <section id="projects" hidden>
     <h2>Projects</h2>
     <p class="blurb">Every project here came out of a problem I  ran into in the past, as well as some coursework projects.</p>
 
@@ -331,18 +345,32 @@ footer a:hover{color:var(--fg);}
     </article>
   </section>
 
-  <section id="about" hidden>
-    <h2>About</h2>
+  <section id="background" hidden>
+    <h2>Background</h2>
 
-    <figure class="portrait">
-      <img src="me.jpg" alt="Justin Watkins">
-      <figcaption>Virginia Beach, VA</figcaption>
-    </figure>
+    <div class="job">
+      <p class="when">Current</p>
+      <p class="what">Maintenance Technician, timeshare resort</p>
+      <p class="note">Appliance repair, pool equipment and chemistry, facilities work across occupied units. Diagnose, repair, document.</p>
+    </div>
 
-    <p>I started in computer science at Tidewater Community College and transferred to Old Dominion to finish in cybersecurity.</p>
-    <p>I work part time as a maintenance technician at a timeshare resort: appliance repair, pool chemistry and equipment, and general facilities work across occupied units. I learned how to diagnose from an a problem with 0 background, work in a live environment you cannot shut down, and explain a failure to someone. A help desk and a service call run on the same three skills.</p>
-    <p>Before this I spent about three years at L.L.Bean in sales and a year and a half washing dishes.</p>
-    <p>Away from work I fish the Sandbridge surf and the local piers, hike, play Guitar/Violin and I work on cars.</p>
+    <div class="job">
+      <p class="when">Current</p>
+      <p class="what">B.S. Cybersecurity, Old Dominion University</p>
+      <p class="note">Enrolled full time. Working through CompTIA Security+ alongside coursework.</p>
+    </div>
+
+    <div class="job">
+      <p class="when">Prior</p>
+      <p class="what">Computer Science, Tidewater Community College</p>
+      <p class="note">Programming and data structures</p>
+    </div>
+
+    <div class="job">
+      <p class="when">Prior</p>
+      <p class="what">Sales, L.L.Bean</p>
+      <p class="note">About three years as a sales rep talking to customers, handling money and organizing clothes.</p>
+    </div>
   </section>
 
   <section id="skills" hidden>
@@ -395,34 +423,6 @@ footer a:hover{color:var(--fg);}
     </div>
   </section>
 
-  <section id="background" hidden>
-    <h2>Background</h2>
-
-    <div class="job">
-      <p class="when">Current</p>
-      <p class="what">Maintenance Technician, timeshare resort</p>
-      <p class="note">Appliance repair, pool equipment and chemistry, facilities work across occupied units. Diagnose, repair, document.</p>
-    </div>
-
-    <div class="job">
-      <p class="when">Current</p>
-      <p class="what">B.S. Cybersecurity, Old Dominion University</p>
-      <p class="note">Enrolled full time. Working through CompTIA Security+ alongside coursework.</p>
-    </div>
-
-    <div class="job">
-      <p class="when">Prior</p>
-      <p class="what">Computer Science, Tidewater Community College</p>
-      <p class="note">Programming and data structures</p>
-    </div>
-
-    <div class="job">
-      <p class="when">Prior</p>
-      <p class="what">Sales, L.L.Bean</p>
-      <p class="note">About three years as a sales rep talking to customers, handling money and organizing clothes.</p>
-    </div>
-  </section>
-
   <section id="contact" hidden>
     <h2>Contact</h2>
     <ul class="lines">
@@ -461,7 +461,7 @@ footer a:hover{color:var(--fg);}
   var bar = document.getElementById('bar');
   var top = document.getElementById('top');
   var content = document.getElementById('content');
-  var pages = ['projects', 'about', 'skills', 'background', 'contact'];
+  var pages = ['about', 'projects', 'background', 'skills', 'contact'];
 
   if ('IntersectionObserver' in window){
     new IntersectionObserver(function(entries){
