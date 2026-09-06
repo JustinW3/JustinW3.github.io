@@ -9,228 +9,422 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#000000;
-  --fg:#ffffff;
-  --mute:#8a8a8a;
-  --dim:#4a4a4a;
-  --rule:#262626;
+
+/* Colors used everywhere on the page. Change a value here and it updates
+   the whole site, since every rule below points at one of these instead
+   of writing the color out again. */
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --mute: #8a8a8a;
+  --dim: #4a4a4a;
+  --rule: #262626;
 }
 
-*{box-sizing:border-box;}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+/* ---------------- reset / base ---------------- */
 
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--fg);
-  font-family:"Courier Prime",ui-monospace,"Courier New",monospace;
-  font-size:15px;
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
+* {
+  box-sizing: border-box;
 }
 
-a{color:var(--fg);text-decoration:none;}
-a:hover{text-decoration:underline;text-underline-offset:4px;}
-:focus-visible{outline:1px solid var(--fg);outline-offset:4px;}
-
-.wrap{max-width:720px;margin:0 auto;padding:0 26px;}
-
-/* ---------------- landing ---------------- */
-.landing{
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:70px 26px 44px;
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
-.boxmark{
-  display:inline-block;
-  background:var(--fg);
-  color:var(--bg);
-  font-weight:700;
-  font-size:clamp(21px,6.2vw,34px);
-  letter-spacing:-.01em;
-  padding:5px 17px 7px;
-  line-height:1.15;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
-.clock{
-  color:var(--mute);
-  font-size:15px;
-  margin:16px 0 0;
-  letter-spacing:.01em;
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Courier Prime", ui-monospace, "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
-.landing nav{
-  display:flex;
-  flex-direction:column;
-  gap:19px;
-  margin:60px 0 0;
-  font-size:17px;
+a {
+  color: var(--fg);
+  text-decoration: none;
 }
 
-.landing .social{
-  margin:52px 0 0;
-  color:var(--dim);
-  font-size:14px;
-  display:flex;
-  gap:22px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.landing .social a{color:var(--dim);}
-.landing .social a:hover{color:var(--fg);}
-
-.landing .fine{
-  margin:44px 0 0;
-  color:var(--dim);
-  font-size:13.5px;
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-/* ---------------- persistent bar ---------------- */
-.bar{
-  position:fixed;top:0;left:0;right:0;z-index:20;
-  background:var(--bg);
-  border-bottom:1px solid var(--rule);
-  padding:9px 0;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .18s linear;
-}
-.bar.on{opacity:1;pointer-events:auto;}
-@media (prefers-reduced-motion:reduce){.bar{transition:none;}}
-.bar .wrap{
-  display:flex;justify-content:space-between;align-items:center;gap:16px;
-  max-width:960px;
-  font-size:13.5px;
-}
-.bar .boxmark{font-size:14px;padding:2px 8px 3px;}
-.bar a{color:var(--mute);}
-.bar a:hover{color:var(--fg);}
-.bar nav{display:flex;gap:14px;flex-wrap:wrap;}
-
-/* ---------------- content (revealed under the buttons) ---------------- */
-#content{border-top:1px solid var(--rule);}
-
-section{
-  padding:64px 0 12px;
-  scroll-margin-top:52px;
+:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: 4px;
 }
 
-h2{
-  margin:0 0 8px;
-  font-size:15px;
-  font-weight:700;
-}
-.blurb{
-  color:var(--mute);
-  margin:0 0 34px;
-  max-width:62ch;
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 26px;
 }
 
-p{max-width:64ch;margin:0 0 15px;}
-p:last-child{margin-bottom:0;}
+/* ---------------- landing (the home screen) ---------------- */
 
-/* ---------------- entries ---------------- */
-.item{
-  padding:26px 0;
-  border-top:1px solid var(--rule);
-}
-.item:first-of-type{border-top:none;padding-top:0;}
-
-.item h3{
-  margin:0;
-  font-size:15px;
-  font-weight:700;
-}
-.item .state{
-  color:var(--mute);
-  margin:0 0 15px;
-  font-size:14px;
-}
-.item .stack{
-  color:var(--dim);
-  font-size:13.5px;
-  margin:16px 0 0;
-  max-width:64ch;
-  line-height:1.65;
+.landing {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 70px 26px 44px;
 }
 
-/* ---------------- about ---------------- */
-.portrait{margin:0 0 26px;max-width:230px;}
-.portrait img{width:100%;display:block;border:1px solid var(--rule);}
-.portrait figcaption{color:var(--dim);font-size:13.5px;margin-top:8px;}
-
-.shot{margin:22px 0;}
-.shot.small{max-width:440px;}
-.shot img{width:100%;display:block;border:1px solid var(--rule);}
-.shot figcaption{color:var(--dim);font-size:13px;margin-top:7px;}
-
-/* ---------------- lists ---------------- */
-.group{margin:0 0 30px;}
-.group:last-child{margin-bottom:0;}
-.group h3{
-  margin:0 0 9px;
-  font-size:15px;
-  font-weight:700;
-  color:var(--mute);
-}
-.group ul{margin:0;padding:0;list-style:none;}
-.group li{
-  padding:3px 0;
-  max-width:64ch;
-}
-.group li::before{
-  content:"— ";
-  color:var(--dim);
+.boxmark {
+  display: inline-block;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: clamp(21px, 6.2vw, 34px);
+  letter-spacing: -.01em;
+  padding: 5px 17px 7px;
+  line-height: 1.15;
 }
 
-/* ---------------- background rows ---------------- */
-.job{
-  padding:19px 0;
-  border-top:1px solid var(--rule);
+.clock {
+  color: var(--mute);
+  font-size: 15px;
+  margin: 16px 0 0;
+  letter-spacing: .01em;
 }
-.job:first-of-type{border-top:none;padding-top:0;}
-.job .when{color:var(--dim);font-size:13.5px;margin:0 0 3px;}
-.job .what{font-weight:700;margin:0;}
-.job p.note{color:var(--mute);margin:5px 0 0;}
 
-/* ---------------- contact ---------------- */
-.lines{margin:0;padding:0;list-style:none;}
-.lines li{padding:5px 0;}
-.lines li span{color:var(--dim);display:inline-block;min-width:9.5em;}
-
-footer{
-  border-top:1px solid var(--rule);
-  margin-top:64px;
-  padding:22px 0 62px;
-  color:var(--dim);
-  font-size:13.5px;
-  display:flex;
-  justify-content:space-between;
-  gap:14px;
-  flex-wrap:wrap;
+.landing nav {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin: 60px 0 0;
+  font-size: 17px;
 }
-footer a{color:var(--dim);}
-footer a:hover{color:var(--fg);}
 
-/* ---------------- responsive ---------------- */
-@media (max-width:620px){
-  body{font-size:14.5px;}
-  .landing nav{font-size:16px;gap:17px;margin-top:48px;}
-  .clock{font-size:13.5px;}
-  section{padding-top:52px;}
-  .lines li span{display:block;min-width:0;}
+.landing .social {
+  margin: 52px 0 0;
+  color: var(--dim);
+  font-size: 14px;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
+
+.landing .social a {
+  color: var(--dim);
+}
+
+.landing .social a:hover {
+  color: var(--fg);
+}
+
+.landing .fine {
+  margin: 44px 0 0;
+  color: var(--dim);
+  font-size: 13.5px;
+}
+
+/* ---------------- persistent bar ----------------
+   Hidden by default. The script at the bottom of the page adds the "on"
+   class once you scroll past the home screen, which fades it in. */
+
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 9px 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s linear;
+}
+
+.bar.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: none;
+  }
+}
+
+.bar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  max-width: 960px;
+  font-size: 13.5px;
+}
+
+.bar .boxmark {
+  font-size: 14px;
+  padding: 2px 8px 3px;
+}
+
+.bar a {
+  color: var(--mute);
+}
+
+.bar a:hover {
+  color: var(--fg);
+}
+
+.bar nav {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ---------------- main content ----------------
+   Hidden by default. Clicking a nav link shows one <section> at a time
+   inside here instead of navigating to a different page. */
+
+#content {
+  border-top: 1px solid var(--rule);
+}
+
+section {
+  padding: 64px 0 12px;
+  scroll-margin-top: 52px;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.blurb {
+  color: var(--mute);
+  margin: 0 0 34px;
+  max-width: 62ch;
+}
+
+p {
+  max-width: 64ch;
+  margin: 0 0 15px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------- project entries ---------------- */
+
+.item {
+  padding: 26px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.item h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.item .state {
+  color: var(--mute);
+  margin: 0 0 15px;
+  font-size: 14px;
+}
+
+.item .stack {
+  color: var(--dim);
+  font-size: 13.5px;
+  margin: 16px 0 0;
+  max-width: 64ch;
+  line-height: 1.65;
+}
+
+/* ---------------- photo and screenshots ---------------- */
+
+.portrait {
+  margin: 0 0 26px;
+  max-width: 230px;
+}
+
+.portrait img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--rule);
+}
+
+.portrait figcaption {
+  color: var(--dim);
+  font-size: 13.5px;
+  margin-top: 8px;
+}
+
+.shot {
+  margin: 22px 0;
+}
+
+/* Used on the smaller maintenance-ticketing screenshots so they don't
+   stretch full width like the Kaizu ones do. */
+.shot.small {
+  max-width: 440px;
+}
+
+.shot img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--rule);
+}
+
+.shot figcaption {
+  color: var(--dim);
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+/* ---------------- bulleted lists (skills, coursework) ---------------- */
+
+.group {
+  margin: 0 0 30px;
+}
+
+.group:last-child {
+  margin-bottom: 0;
+}
+
+.group h3 {
+  margin: 0 0 9px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--mute);
+}
+
+.group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.group li {
+  padding: 3px 0;
+  max-width: 64ch;
+}
+
+/* Draws the "— " in front of every list item instead of typing it out
+   by hand in the HTML each time. */
+.group li::before {
+  content: "— ";
+  color: var(--dim);
+}
+
+/* ---------------- background rows (jobs and school) ---------------- */
+
+.job {
+  padding: 19px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.job:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.job .when {
+  color: var(--dim);
+  font-size: 13.5px;
+  margin: 0 0 3px;
+}
+
+.job .what {
+  font-weight: 700;
+  margin: 0;
+}
+
+.job p.note {
+  color: var(--mute);
+  margin: 5px 0 0;
+}
+
+/* ---------------- contact list ---------------- */
+
+.lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lines li {
+  padding: 5px 0;
+}
+
+.lines li span {
+  color: var(--dim);
+  display: inline-block;
+  min-width: 9.5em;
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 64px;
+  padding: 22px 0 62px;
+  color: var(--dim);
+  font-size: 13.5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: var(--dim);
+}
+
+footer a:hover {
+  color: var(--fg);
+}
+
+/* ---------------- small screens ---------------- */
+
+@media (max-width: 620px) {
+  body {
+    font-size: 14.5px;
+  }
+  .landing nav {
+    font-size: 16px;
+    gap: 17px;
+    margin-top: 48px;
+  }
+  .clock {
+    font-size: 13.5px;
+  }
+  section {
+    padding-top: 52px;
+  }
+  .lines li span {
+    display: block;
+    min-width: 0;
+  }
+}
+
 </style>
 </head>
 <body>
 
+<!-- Fixed bar across the top. Starts invisible; the script below fades
+     it in once you scroll past the home screen. -->
 <div class="bar" id="bar">
   <div class="wrap">
     <a href="#top" class="home-link"><span class="boxmark">Justin Watkins</span></a>
@@ -244,6 +438,8 @@ footer a:hover{color:var(--fg);}
   </div>
 </div>
 
+<!-- The home screen. Always here. Clicking a link below doesn't navigate
+     anywhere, it reveals that section further down the same page. -->
 <div class="landing" id="top">
   <span class="boxmark">Justin Watkins</span>
   <p class="clock" id="clock">Virginia Beach, VA</p>
@@ -263,6 +459,8 @@ footer a:hover{color:var(--fg);}
 
 </div>
 
+<!-- Hidden until a nav link is clicked. The script shows one section
+     at a time here and hides the other four. -->
 <main class="wrap" id="content" hidden>
 
   <section id="about">
@@ -431,74 +629,119 @@ footer a:hover{color:var(--fg);}
 </main>
 
 <script>
-(function(){
+(function () {
+
+  // ----- Live clock shown on the home screen -----
+
   var clock = document.getElementById('clock');
-  var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+  var months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
-  function tick(){
-    var d = new Date();
-    var h = d.getHours();
-    var ampm = h >= 12 ? 'pm' : 'am';
-    h = h % 12; if (h === 0) h = 12;
-    clock.textContent =
-      months[d.getMonth()] + '/' + pad(d.getDate()) + '/' + d.getFullYear() +
-      ' ' + h + ':' + pad(d.getMinutes()) + ampm + ' Virginia Beach';
+  function pad(number) {
+    return number < 10 ? '0' + number : '' + number;
   }
 
-  tick();
-  setInterval(tick, 10000);
+  function updateClock() {
+    var now = new Date();
+    var hours = now.getHours();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+    if (hours === 0) {
+      hours = 12;
+    }
+
+    var date = months[now.getMonth()] + '/' + pad(now.getDate()) + '/' + now.getFullYear();
+    var time = hours + ':' + pad(now.getMinutes()) + ampm;
+
+    clock.textContent = date + ' ' + time + ' Virginia Beach';
+  }
+
+  updateClock();
+  setInterval(updateClock, 10000);
+
+  // ----- Fade the fixed bar in once the home screen scrolls out of view -----
 
   var bar = document.getElementById('bar');
-  var top = document.getElementById('top');
-  var content = document.getElementById('content');
-  var pages = ['about', 'projects', 'background', 'skills', 'contact'];
+  var home = document.getElementById('top');
 
-  if ('IntersectionObserver' in window){
-    new IntersectionObserver(function(entries){
-      bar.classList.toggle('on', !entries[0].isIntersecting);
-    }, { threshold: 0 }).observe(top);
+  if ('IntersectionObserver' in window) {
+    var watchHomeScreen = new IntersectionObserver(function (entries) {
+      var stillOnHomeScreen = entries[0].isIntersecting;
+      bar.classList.toggle('on', !stillOnHomeScreen);
+    }, { threshold: 0 });
+
+    watchHomeScreen.observe(home);
   }
 
-  function showPage(id, animate){
-    pages.forEach(function(pageId){
-      document.getElementById(pageId).hidden = (pageId !== id);
+  // ----- Clicking a nav link reveals that section below the buttons -----
+
+  var content = document.getElementById('content');
+  var pageNames = ['about', 'projects', 'background', 'skills', 'contact'];
+
+  function showPage(name, scrollToIt) {
+    // Show the section that matches "name" and hide the other four.
+    pageNames.forEach(function (pageName) {
+      document.getElementById(pageName).hidden = (pageName !== name);
     });
+
     content.hidden = false;
-    if (animate){
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (scrollToIt) {
+      document.getElementById(name).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  function goHome(animate){
+  function goHome(scrollToIt) {
     content.hidden = true;
     history.replaceState(null, '', location.pathname);
-    if (animate){
-      top.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (scrollToIt) {
+      home.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-  document.querySelectorAll('.landing nav a, .bar nav a').forEach(function(link){
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      var id = link.getAttribute('href').replace('#page-', '');
-      history.replaceState(null, '', '#page-' + id);
-      showPage(id, true);
+  // Every nav link (in the bar and on the home screen) has an href like
+  // "#page-projects". Clicking one shows that page instead of letting the
+  // browser jump to it, which is what makes this feel like one page
+  // instead of five separate ones.
+  var navLinks = document.querySelectorAll('.landing nav a, .bar nav a');
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      var pageName = link.getAttribute('href').replace('#page-', '');
+      history.replaceState(null, '', '#page-' + pageName);
+      showPage(pageName, true);
     });
   });
 
-  document.querySelectorAll('.home-link').forEach(function(link){
-    link.addEventListener('click', function(e){
-      e.preventDefault();
+  // Clicking the "Justin Watkins" logo (in the fixed bar) goes back to
+  // the plain home screen.
+  var logoLinks = document.querySelectorAll('.home-link');
+
+  logoLinks.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
       goHome(true);
     });
   });
 
-  var initial = location.hash.replace('#page-', '').replace('#', '');
-  if (pages.indexOf(initial) !== -1){
-    showPage(initial, false);
+  // If the page loads with a hash like "#page-projects" already in the
+  // address bar (a direct link, or a refresh), show that section right
+  // away instead of the plain home screen.
+  //
+  // Note: the hash is "page-projects", not "projects". If it matched a
+  // real element id, the browser tries to auto-scroll to that element
+  // the moment the page loads, before this script has a chance to
+  // un-hide it, and that produced a blank page. Using a hash that
+  // doesn't match any id avoids the problem entirely.
+  var startingPage = location.hash.replace('#page-', '').replace('#', '');
+
+  if (pageNames.indexOf(startingPage) !== -1) {
+    showPage(startingPage, false);
   }
+
 })();
 </script>
 
