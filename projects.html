@@ -166,6 +166,10 @@ p:last-child{margin-bottom:0;}
 .portrait img{width:100%;display:block;border:1px solid var(--rule);}
 .portrait figcaption{color:var(--dim);font-size:13.5px;margin-top:8px;}
 
+.shot{margin:22px 0;}
+.shot img{width:100%;display:block;border:1px solid var(--rule);}
+.shot figcaption{color:var(--dim);font-size:13px;margin-top:7px;}
+
 /* ---------------- lists ---------------- */
 .group{margin:0 0 30px;}
 .group:last-child{margin-bottom:0;}
@@ -251,6 +255,14 @@ footer a:hover{color:var(--fg);}
       <p>A fishing app built as three connected products: a mobile app, an internal admin dashboard, and a public site selling paid memberships.</p>
       <p>The mobile app handled sign-in, catch logging, species records, trip grouping, and a social feed, running on real iPhone hardware through TestFlight. The dashboard ran on role based permissions, so moderators could manage tournaments and merch drops while revenue and staff management stayed owner only. The website took subscriptions through Stripe and sold memberships outside the app store.</p>
       <p>I shut it down it after reading the market. The category is crowded and the incumbent has hardware integrations I could not match. The architecture stands and I learned more building it than I would have finishing it.</p>
+      <figure class="shot">
+        <img src="shots/kaizu-web.png" alt="Kaizu public website homepage">
+        <figcaption>The public site</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="shots/kaizu-admin.png" alt="Kaizu admin dashboard sign-in screen">
+        <figcaption>The admin dashboard</figcaption>
+      </figure>
       <p class="stack">React Native (Expo), Next.js, Supabase (Postgres, auth, storage), Stripe subscriptions and webhooks, Vercel, Cloudflare DNS and email routing, local Xcode builds</p>
     </article>
 
@@ -259,6 +271,10 @@ footer a:hover{color:var(--fg);}
       <p class="state">Running</p>
       <p>Maintenance software at a resort ignores the one constraint that governs the job: you cannot enter an occupied unit. Tickets were getting assigned to rooms nobody could go into.</p>
       <p>I built a ticket system that checks occupancy before it routes work, so a tech opens the app to a queue they can actually clear.</p>
+      <figure class="shot">
+        <img src="shots/maintenance-ticketing.png" alt="Maintenance ticketing app home screen">
+        <figcaption>The ticket dashboard</figcaption>
+      </figure>
       <p class="stack">Next.js, Supabase, Vercel</p>
     </article>
 
