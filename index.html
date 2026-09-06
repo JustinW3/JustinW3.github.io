@@ -167,6 +167,7 @@ p:last-child{margin-bottom:0;}
 .portrait figcaption{color:var(--dim);font-size:13.5px;margin-top:8px;}
 
 .shot{margin:22px 0;}
+.shot.small{max-width:440px;}
 .shot img{width:100%;display:block;border:1px solid var(--rule);}
 .shot figcaption{color:var(--dim);font-size:13px;margin-top:7px;}
 
@@ -304,9 +305,13 @@ footer a:hover{color:var(--fg);}
       <p class="state">Running</p>
       <p>Maintenance software at a resort ignores the one constraint that governs the job: you cannot enter an occupied unit. Tickets were getting assigned to rooms nobody could go into.</p>
       <p>I built a ticket system that checks occupancy before it routes work, so a tech opens the app to a queue they can actually clear.</p>
-      <figure class="shot">
-        <img src="shots/maintenance-ticketing.png" alt="Maintenance ticketing app home screen">
-        <figcaption>The ticket dashboard</figcaption>
+      <figure class="shot small">
+        <img src="shots/maintenance-ticket-list.png" alt="Maintenance ticketing app open tickets list">
+        <figcaption>Open tickets, filtered by what's workable today</figcaption>
+      </figure>
+      <figure class="shot small">
+        <img src="shots/maintenance-ticket-form.png" alt="Maintenance ticketing new ticket form">
+        <figcaption>Creating a new ticket</figcaption>
       </figure>
       <p class="stack">Next.js, Supabase, Vercel</p>
     </article>
